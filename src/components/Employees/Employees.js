@@ -3,10 +3,11 @@ import "./Employees.css";
 import { useEffect } from "react";
 import { useState } from "react";
 import { Container, Table } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 
 const Employees = () => {
   const [employees, setEmployees] = useState([]);
+  const { id } = useParams();
   useEffect(() => {
     fetch("./employeeData.json")
       .then((response) => response.json())
@@ -28,18 +29,18 @@ const Employees = () => {
           <tbody>
             {employees.map((employee) => (
               <tr>
-                <td>{employee.id}</td>
+                <td>{employee?.id}</td>
                 <td>
                   <img
                     className="img-fluid employee-img"
-                    src={employee.image}
+                    src={employee?.image}
                     alt=""
                   />
                 </td>
-                <td>{employee.name}</td>
-                <td>{employee.designation}</td>
+                <td>{employee?.name}</td>
+                <td>{employee?.designation}</td>
                 <td>
-                  <Link>Details</Link>
+                  <NavLink to={`/employees/${id}`}>Details</NavLink>
                 </td>
               </tr>
             ))}
