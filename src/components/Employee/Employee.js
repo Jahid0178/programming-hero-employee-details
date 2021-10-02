@@ -2,7 +2,7 @@ import React from "react";
 import "./Employee.css";
 import { useEffect } from "react";
 import { useState } from "react";
-import { Card, Button } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 
 const Employee = () => {
