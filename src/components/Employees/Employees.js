@@ -43,7 +43,7 @@ const Employees = () => {
                     className="details-btn"
                     to={`/employees/${employee.id}`}
                   >
-                    Details
+                    See Details
                   </NavLink>
                 </td>
               </tr>
