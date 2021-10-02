@@ -3,13 +3,12 @@ import "./Employees.css";
 import { useEffect } from "react";
 import { useState } from "react";
 import { Container, Table } from "react-bootstrap";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Employees = () => {
   const [employees, setEmployees] = useState([]);
-  const { id } = useParams();
   useEffect(() => {
-    fetch("./employeeData.json")
+    fetch("/employeeData.json")
       .then((response) => response.json())
       .then((data) => setEmployees(data));
   }, []);
@@ -40,7 +39,12 @@ const Employees = () => {
                 <td>{employee?.name}</td>
                 <td>{employee?.designation}</td>
                 <td>
-                  <NavLink to={`/employees/${id}`}>Details</NavLink>
+                  <NavLink
+                    className="details-btn"
+                    to={`/employees/${employee.id}`}
+                  >
+                    Details
+                  </NavLink>
                 </td>
               </tr>
             ))}
